@@ -50,47 +50,12 @@ def updateUser(user_update:UserUpdateRequest,user_id: UUID):
         details = f"User with id: {user_id} does not exists"
     )
 
-# @app.get("/index/{name}")
-# def index(name):
-#     return f"welcome to my port {name}"
-
-
-
-# @app.get("/user/{id}")
-# def user(id:int, limit:int = 10):
-#     return {"data":{"id": id, "limit":limit}}
-
-# @app.get("/user_1/{id}")
-# def user_1(id:int , limit:Optional[int] = None):
-#     return {"data":{"id":id, "limit":limit}}
-
-# @app.get("/user_2/{id}")
-# def user_1(id:int , limit:Optional[int] = None):
-
-#     if limit is None:
-#         return {"data":{"id":id}}
-#     else:
-#         return {"data":{"id":id, "limit":limit}}
-    
-
-
-
-# # -------------
-# class Request(BaseModel):
-
-#     name: str
-#     age: int
-#     email: str
-
-
-
-
-# @app.post("/")
-# def index(request:Request):
-#     return { "data" : request}
-
-
-# ----------------CRED Operation
+@app.delete("/api/users/{user_id}")
+def deleteUser(user_id : UUID):
+    for user in db:
+        if user_id == user_id:
+            db.remove(user)
+            return {"msg":"Deleted"}
 
 
     
